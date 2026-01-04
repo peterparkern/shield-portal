@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S.H.I.E.L.D. - Strategic Homeland Intervention, Enforcement and Logistics Division</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1d3e 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background: linear-gradient(to right, #000814, #001d3d);
+      border-bottom: 3px solid #ffd60a;
+      padding: 20px 40px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .shield-logo {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #ffd60a 0%, #ffc300 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 24px;
+      color: #000814;
+      border: 3px solid #ffd60a;
+      box-shadow: 0 0 20px rgba(255, 214, 10, 0.5);
+    }
+
+    .title-section h1 {
+      color: #ffd60a;
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .title-section p {
+      color: #94a3b8;
+      font-size: 12px;
+      margin-top: 5px;
+      letter-spacing: 1px;
+    }
+
+    .nav {
+      background: #001d3d;
+      padding: 15px 40px;
+      border-bottom: 1px solid #003566;
+    }
+
+    .nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      margin-right: 30px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover {
+      color: #ffd60a;
+    }
+
+    .container {
+      flex: 1;
+      max-width: 1200px;
+      margin: 40px auto;
+      padding: 0 40px;
+      width: 100%;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 25px;
+      margin-top: 30px;
+    }
+
+    .news-card {
+      background: linear-gradient(135deg, #001d3d 0%, #002855 100%);
+      border: 1px solid #003566;
+      border-radius: 8px;
+      padding: 25px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .news-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(255, 214, 10, 0.2);
+      border-color: #ffd60a;
+    }
+
+    .news-card h3 {
+      color: #ffd60a;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    .news-card .date {
+      color: #64748b;
+      font-size: 12px;
+      margin-bottom: 15px;
+    }
+
+    .news-card p {
+      color: #cbd5e1;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    .classification {
+      display: inline-block;
+      background: #dc2626;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 4px;
+      font-size: 11px;
+      font-weight: bold;
+      margin-top: 15px;
+      text-transform: uppercase;
+    }
+
+    .classification.level-7 {
+      background: #dc2626;
+    }
+
+    .classification.level-5 {
+      background: #ea580c;
+    }
+
+    .classification.level-3 {
+      background: #fbbf24;
+      color: #000;
+    }
+
+    footer {
+      background: #000814;
+      border-top: 2px solid #003566;
+      padding: 20px;
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #ffd60a;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #ffc300;
+    }
+
+    .alert-banner {
+      background: #dc2626;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="alert-banner">⚠ CLASSIFIED NETWORK - AUTHORIZED PERSONNEL ONLY ⚠</div>
+  <div class="header">
+    <div class="logo-container">
+      <img class="shield-logo" src="{{ url_for('static', filename='images/shield.webp') }}" alt="SHIELD">
+      <div class="title-section">
+        <h1>Strategic Homeland Intervention</h1>
+        <p>Enforcement and Logistics Division</p>
+      </div>
+    </div>
+  </div>
+  <div class="nav">
+    <a href="/">Home</a>
+    <a href="#operations">Operations</a>
+    <a href="#personnel">Personnel</a>
+    <a href="#threats">Threat Assessment</a>
+    <a href="#archive">Archive</a>
+    <a href="/admin">Admin</a>
+  </div>
+  <div class="container">
+    <h2 style="color: #ffd60a; margin-bottom: 10px;">Latest Intelligence Briefings</h2>
+    <p style="color: #94a3b8; margin-bottom: 30px;">Classified information for authorized personnel</p>
+    <div class="news-grid">
+      <div class="news-card">
+        <h3>Enhanced Individual Activity Detected</h3>
+        <div class="date">January 3, 2026</div>
+        <p>Recent satellite surveillance has detected unusual energy signatures in the New York metropolitan area.
+          Enhanced response teams have been deployed for reconnaissance.</p>
+        <span class="classification level-7">Level 7</span>
+      </div>
+      <div class="news-card">
+        <h3>Avengers Initiative: Status Update</h3>
+        <div class="date">January 2, 2026</div>
+        <p>All active members have completed their quarterly assessment protocols. New threat models are being developed
+          based on recent global incidents.</p>
+        <span class="classification level-7">Level 7</span>
+      </div>
+      <div class="news-card">
+        <h3>Alien Technology Recovery: Norway</h3>
+        <div class="date">December 30, 2025</div>
+        <p>Field teams have successfully recovered remnants of unknown origin from the Oslo region. Analysis is underway
+          at the Science Division facility.</p>
+        <span class="classification level-5">Level 5</span>
+      </div>
+      <div class="news-card">
+        <h3>Global Security Symposium Scheduled</h3>
+        <div class="date">December 28, 2025</div>
+        <p>Director Fury will attend the international security summit in Geneva next month to discuss enhanced
+          cooperation protocols with allied organizations.</p>
+        <span class="classification level-3">Level 3</span>
+      </div>
+      <div class="news-card">
+        <h3>Hydra Cell Neutralized</h3>
+        <div class="date">December 25, 2025</div>
+        <p>Strike Team Alpha successfully dismantled a Hydra sleeper cell operating in Eastern Europe. All hostile
+          agents are now in custody.</p>
+        <span class="classification level-7">Level 7</span>
+      </div>
+      <div class="news-card">
+        <h3>New Recruit Training Cycle Begins</h3>
+        <div class="date">December 20, 2025</div>
+        <p>The latest class of agent candidates has commenced their training at the S.H.I.E.L.D. Academy. 47 recruits
+          from 23 nations are participating.</p>
+        <span class="classification level-3">Level 3</span>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>Made with ❤️ by <a href="https://github.com/peterparkern/shield-portal" target="_blank">yourusername</a></p>
+    <p style="margin-top: 10px; font-size: 12px;">S.H.I.E.L.D. Portal v2.4.7 | Clearance Required | Marvel Universe
+    </p>
+  </footer>
+</body>
+
+</html>

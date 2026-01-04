@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>S.H.I.E.L.D. Admin - Restricted Access</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1d3e 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background: linear-gradient(to right, #000814, #001d3d);
+      border-bottom: 3px solid #ffd60a;
+      padding: 20px 40px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .shield-logo {
+      width: 80px;
+      height: 80px;
+      background: radial-gradient(circle, #ffd60a 0%, #ffc300 100%);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      font-size: 24px;
+      color: #000814;
+      border: 3px solid #ffd60a;
+      box-shadow: 0 0 20px rgba(255, 214, 10, 0.5);
+    }
+
+    .title-section h1 {
+      color: #ffd60a;
+      font-size: 28px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+    }
+
+    .title-section p {
+      color: #94a3b8;
+      font-size: 12px;
+      margin-top: 5px;
+      letter-spacing: 1px;
+    }
+
+    .nav {
+      background: #001d3d;
+      padding: 15px 40px;
+      border-bottom: 1px solid #003566;
+    }
+
+    .nav a {
+      color: #94a3b8;
+      text-decoration: none;
+      margin-right: 30px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: color 0.3s;
+    }
+
+    .nav a:hover {
+      color: #ffd60a;
+    }
+
+    .container {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+    }
+
+    .admin-panel {
+      background: linear-gradient(135deg, #001d3d 0%, #002855 100%);
+      border: 2px solid #ffd60a;
+      border-radius: 8px;
+      padding: 40px;
+      max-width: 500px;
+      width: 100%;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(255, 214, 10, 0.3);
+    }
+
+    .admin-panel h2 {
+      color: #ffd60a;
+      margin-bottom: 20px;
+      font-size: 24px;
+    }
+
+    .admin-panel input {
+      width: 100%;
+      padding: 12px;
+      margin: 20px 0;
+      background: #0a0e27;
+      border: 1px solid #003566;
+      border-radius: 4px;
+      color: #e0e0e0;
+      font-size: 14px;
+    }
+
+    .admin-panel button {
+      background: #ffd60a;
+      color: #000814;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: background 0.3s;
+    }
+
+    .admin-panel button:hover {
+      background: #ffc300;
+    }
+
+    .maintenance-msg {
+      display: none;
+      background: #ea580c;
+      border: 2px solid #fb923c;
+      border-radius: 8px;
+      padding: 30px;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .maintenance-msg h3 {
+      color: #fff;
+      margin-bottom: 15px;
+    }
+
+    .maintenance-msg p {
+      line-height: 1.8;
+      color: #fed7aa;
+    }
+
+    footer {
+      background: #000814;
+      border-top: 2px solid #003566;
+      padding: 20px;
+      text-align: center;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    footer a {
+      color: #ffd60a;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    footer a:hover {
+      color: #ffc300;
+    }
+
+    .alert-banner {
+      background: #dc2626;
+      color: white;
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="alert-banner">⚠ CLASSIFIED NETWORK - AUTHORIZED PERSONNEL ONLY ⚠</div>
+  <div class="header">
+    <div class="logo-container">
+      <div class="shield-logo">S.H.I.E.L.D.</div>
+      <div class="title-section">
+        <h1>Strategic Homeland Intervention</h1>
+        <p>Enforcement and Logistics Division</p>
+      </div>
+    </div>
+  </div>
+  <div class="nav">
+    <a href="/">Home</a>
+    <a href="#operations">Operations</a>
+    <a href="#personnel">Personnel</a>
+    <a href="#threats">Threat Assessment</a>
+    <a href="#archive">Archive</a>
+    <a href="/admin">Admin</a>
+  </div>
+  <div class="container">
+    <div class="admin-panel">
+      <h2>🔒 RESTRICTED ACCESS</h2>
+      <p style="color: #94a3b8;">Enter security clearance code</p>
+      <input type="password" id="secretInput" placeholder="Enter secret code...">
+      <button onclick="checkSecret()">Access Secure Files</button>
+      <div class="maintenance-msg" id="maintenanceMsg">
+        <h3>⚠️ SYSTEM MAINTENANCE IN PROGRESS</h3>
+        <p>This feature is temporarily unavailable due to scheduled maintenance.</p>
+        <p style="margin-top: 15px;">Our technical team is working to restore full functionality. Please try again
+          later.</p>
+        <p style="margin-top: 15px; color: #fef08a;"><em>Estimated completion: 48 hours</em></p>
+        <p style="margin-top: 15px; font-size: 12px;">If you require immediate access, contact Director Fury directly.
+        </p>
+      </div>
+    </div>
+  </div>
+  <footer>
+    <p>Made with ❤️ by <a href="https://github.com/peterparkern/shield-portal" target="_blank">yourusername</a></p>
+    <p style="margin-top: 10px; font-size: 12px;">S.H.I.E.L.D. Portal v2.4.7 | Clearance Required | Marvel Universe
+    </p>
+  </footer>
+  <script>
+    function checkSecret() {
+      document.getElementById('maintenanceMsg').style.display = 'block';
+    }
+    document.getElementById('secretInput').addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') checkSecret();
+    });
+  </script>
+</body>
+
+</html>
